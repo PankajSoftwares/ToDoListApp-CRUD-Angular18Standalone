@@ -1,0 +1,40 @@
+/* Footer container styling */
+.footer {
+  background-color: #6200ea; /* Modern Material Design purple */
+  color: #fff;
+  /* padding: 1rem 2rem; */
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -4px 12px rgba(0.2, 0.2, 0.6, 0.1);
+  opacity: 55%;
+
+}
+
+/* Paragraph styling */
+.footer p {
+  margin: 0;
+  letter-spacing: 0.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Add a premium icon */
+.footer p::before {
+  content: '⭐'; /* Premium star emoji */
+  font-size: 1.2rem;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+  .footer {
+    font-size: 0.9rem;
+    padding: 0.8rem 1rem;
+  }
+}

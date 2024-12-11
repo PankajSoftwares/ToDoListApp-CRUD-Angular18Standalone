@@ -1,0 +1,43 @@
+<div class="signup-container">
+  <h2>Sign Up 📝</h2>
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <label for="name">👤 Name:</label>
+    <input
+      type="text"
+      id="name"
+      formControlName="name"
+      placeholder="Enter your name"
+    />
+    <div *ngIf="signupForm.controls['name'].invalid && signupForm.controls['name'].touched" class="error">
+      Name is required.
+    </div>
+
+    <label for="email">📩 Email:</label>
+    <input
+      type="email"
+      id="email"
+      formControlName="email"
+      placeholder="Enter your email"
+    />
+    <div *ngIf="signupForm.controls['email'].invalid && signupForm.controls['email'].touched" class="error">
+      Valid email is required.
+    </div>
+
+    <label for="password">🔒 Password:</label>
+    <input
+      type="password"
+      id="password"
+      formControlName="password"
+      placeholder="Enter your password"
+    />
+    <div *ngIf="signupForm.controls['password'].invalid && signupForm.controls['password'].touched" class="error">
+      Password must be at least 6 characters long.
+    </div>
+
+    <button type="submit" [disabled]="signupForm.invalid">Sign Up 🎉</button>
+  </form>
+
+  <p class="footer-text">
+    Already have an account? <a routerLink="/login" routerLinkActive="active-link">Login here 🔑</a>.
+  </p>
+</div>

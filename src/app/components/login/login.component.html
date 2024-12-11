@@ -1,0 +1,52 @@
+<div class="login-container">
+  <h2>Login 🔐</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <!-- Email Field -->
+    <div class="form-group">
+      <label for="email">📩 Email:</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        placeholder="Enter your email"
+        [attr.aria-invalid]="loginForm.controls['email'].invalid && loginForm.controls['email'].touched"
+      />
+      <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched" class="error">
+        <span *ngIf="loginForm.controls['email'].errors?.['required']">Email is required.</span>
+        <span *ngIf="loginForm.controls['email'].errors?.['email']">Please enter a valid email.</span>
+      </div>
+    </div>
+
+    <!-- Password Field -->
+    <div class="form-group">
+      <label for="password">🔒 Password:</label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        placeholder="Enter your password"
+        [attr.aria-invalid]="loginForm.controls['password'].invalid && loginForm.controls['password'].touched"
+      />
+      <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched" class="error">
+        <span *ngIf="loginForm.controls['password'].errors?.['required']">Password is required.</span>
+        <span *ngIf="loginForm.controls['password'].errors?.['minlength']">
+          Password must be at least 6 characters long.
+        </span>
+        <span *ngIf="loginForm.controls['password'].errors?.['pattern']">
+          Password must only contain letters and numbers.
+        </span>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="loginForm.invalid" class="btn-submit">
+      Login 🚀
+    </button>
+  </form>
+
+  <!-- Footer -->
+  <p class="footer-text">
+    Don't have an account?
+    <a routerLink="/signup" class="active-link">Sign up 📝</a>.
+  </p>
+</div>

@@ -1,0 +1,123 @@
+.login-container {
+  max-width: 450px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.login-container:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  color: #333;
+  font-weight: 600;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+label {
+  font-weight: 500;
+  font-size: 1rem;
+  color: #555;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #f9f9f9;
+}
+
+input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+  background-color: #fff;
+}
+
+button {
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+button[disabled] {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: -5px;
+  text-align: left;
+}
+
+input::placeholder {
+  color: #bbb;
+}
+
+input:focus::placeholder {
+  color: #007bff;
+}
+
+/* Footer Text Styling */
+.footer-text {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: #777;
+  text-align: center;
+}
+
+/* Active Link Styling */
+.active-link {
+  color: #0066cc;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.active-link:hover {
+  color: #005bb5;
+  text-decoration: underline;
+}
+
+/* Optional Styling for Specific Form Elements */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.btn-submit {
+  width: 100%;
+}

@@ -1,0 +1,35 @@
+<header class="header">
+  <!-- Logo Section -->
+  <div class="header-left">
+    <a routerLink="/login" class="header-logo">
+      <img src="assets/logo.png" alt="Todo App Logo" />
+    </a>
+  </div>
+
+  <!-- Title Section -->
+  <div class="header-center">
+    <h1 class="header-title"><pre>                   ToDo App By PankajBengaluru</pre></h1>
+  </div>
+
+  <!-- Navigation Section -->
+  <div *ngIf="!isLoggedIn" class="header-right">
+    <!-- Show Login/Signup links when not logged in -->
+    <ul class="nav-grid">
+      <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+      <li><a routerLink="/signup" routerLinkActive="active">Sign Up</a></li>
+    </ul>
+  </div>
+
+  <div *ngIf="isLoggedIn" class="header-right">
+    <!-- Welcome Message -->
+    <p *ngIf="isLoggedIn && currentUserName" class="welcome-message">
+      Welcome, {{ currentUserName }}!
+    </p>
+    <!-- Navigation Links -->
+    <ul class="nav-grid">
+      <li><a [routerLink]="['/app-add-user-todo']" routerLinkActive="active">Add ToDo</a></li>
+      <li><a [routerLink]="['/view-user-todo']" routerLinkActive="active">View All ToDos</a></li>
+      <li><a (click)="logout()" routerLinkActive="active">Logout</a></li>
+    </ul>
+  </div>
+</header>

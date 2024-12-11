@@ -1,0 +1,84 @@
+<div class="view-todo-container">
+  <h2>View All User Todos</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>
+          <input 
+            type="checkbox" 
+            [checked]="isAllSelected()" 
+            (change)="toggleSelectAll($event)" 
+            aria-label="Select all tasks" 
+          />
+        </th>
+        <th>SL No.</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>State</th>
+        <th>Task</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let todo of todos; let i = index">
+        <td>
+          <input 
+            title="Select Task"
+            type="checkbox" 
+            [checked]="todo.selected" 
+            (change)="onCheckboxChange(todo)" 
+            [attr.aria-label]="'Select task ' + todo.task" 
+          />
+        </td>
+        <td>{{ i + 1 }}</td>
+        <td>{{ todo.name }}</td>
+        <td>{{ todo.age }}</td>
+        <td>{{ todo.state }}</td>
+        <td>{{ todo.task }}</td>
+        <td>
+          <button 
+            (click)="editTodo(todo)" 
+            [disabled]="todo.isEditDisabled" 
+            [attr.aria-label]="'Edit task ' + todo.task">
+            Edit
+          </button>
+          <button 
+            (click)="deleteTodo(todo)" 
+            [attr.aria-label]="'Delete task ' + todo.task">
+            Delete
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="todos.length === 0">
+        <td colspan="7">No todos available.</td>
+      </tr>
+    </tbody>
+    
+  </table>
+  
+  <!-- Modal -->
+  <div *ngIf="selectedTodo" class="modal-overlay">
+    <div class="modal-content">
+      <h2>Edit Todo</h2>
+      <form [formGroup]="editTodoForm" (ngSubmit)="onEditSubmit()">
+        <label for="name">Name:</label>
+        <input id="name" type="text" formControlName="name" />
+
+        <label for="age">Age:</label>
+        <input id="age" type="number" formControlName="age" />
+
+        <label for="state">State:</label>
+        <input id="state" type="text" formControlName="state" />
+
+        <label for="task">Task:</label>
+        <textarea id="task" formControlName="task"></textarea>
+
+        <div class="modal-actions">
+          <button type="submit" [disabled]="editTodoForm.invalid">Save</button>
+          <button type="button" (click)="closeModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

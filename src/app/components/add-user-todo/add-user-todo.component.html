@@ -1,0 +1,39 @@
+<div class="add-todo-container">
+  <h2>📝 Add New Todo</h2>
+
+  <form [formGroup]="addTodoForm" (ngSubmit)="onSubmit()">
+    
+    <label for="name">👤 Name:</label>
+    <input type="text" id="name" formControlName="name" placeholder="Enter your name" />
+    <div *ngIf="addTodoForm.get('name')?.invalid && addTodoForm.get('name')?.touched" class="error">
+      ⚠️ Name is required (Minimum 3 characters is allowed).
+    </div>
+
+    <label for="age">🎂 Age:</label>
+    <input type="number" id="age" formControlName="age" placeholder="Enter your age" />
+    <div *ngIf="addTodoForm.get('age')?.invalid && addTodoForm.get('age')?.touched" class="error">
+      ⚠️ Age is required between 2 to 100 years only.
+    </div>
+
+    <label for="state">🌍 State:</label>
+    <select id="state" formControlName="state">
+      <option value="">🌐 Select State</option>
+      <option *ngFor="let state of states" [value]="state">🏞️ {{ state }}</option>
+    </select>
+    <div *ngIf="addTodoForm.get('state')?.invalid && addTodoForm.get('state')?.touched" class="error">
+      ℹ️ State is optional.
+    </div>
+
+    <label for="task">✅ Task:</label>
+    <textarea id="task" formControlName="task" placeholder="Enter your task"></textarea>
+    <div *ngIf="addTodoForm.get('task')?.invalid && addTodoForm.get('task')?.touched" class="error">
+      ⚠️ Task is required and cannot exceed 100 characters.
+    </div>
+
+    <button type="submit" [disabled]="addTodoForm.invalid">
+      🚀 Submit
+    </button>
+  </form>
+
+  
+</div>
