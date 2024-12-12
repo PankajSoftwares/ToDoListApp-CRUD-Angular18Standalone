@@ -29,11 +29,13 @@ form {
 }
 
 label {
-  font-weight: 500;
+  font-weight:bold;
+  /* font-weight: 500; */
   font-size: 1rem;
   color: #555;
   text-align: left;
   margin-bottom: 5px;
+
 }
 
 input {

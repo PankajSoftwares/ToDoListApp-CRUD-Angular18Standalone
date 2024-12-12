@@ -4,15 +4,18 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
+
 export class AuthService {
   private users: { name: string; email: string; password: string }[] = [];
+
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+
   private currentUserNameSubject = new BehaviorSubject<string | null>(null);
 
   // Simulate a logged-in user in memory
   private loggedInUser: { name: string; email: string } | null = null;
 
-  constructor() { }
+  constructor() {}
 
   // Login method
   login(credentials: { email: string; password: string }): boolean {
@@ -30,8 +33,6 @@ export class AuthService {
 
     return false;
   }
-
-
 
   // Signup method
   signup(userData: { name: string; email: string; password: string }): void {
@@ -59,9 +60,7 @@ export class AuthService {
     this.isAuthenticatedSubject.next(false);
     this.currentUserNameSubject.next(null);
     this.loggedInUser = null;
-     // Clear the user in memory
   }
-
 
   // Initialize login state (on page refresh)
   initializeLoginState() {

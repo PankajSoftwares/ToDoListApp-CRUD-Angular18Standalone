@@ -13,6 +13,16 @@
   z-index: 1000;
 }
 
+/* Centered title */
+.header-center {
+  position: relative ; /* Use absolute positioning */
+  left: 50%; /* Move to the middle horizontally */
+  top: 50%; /* Move to the middle vertically */
+  transform: translate(-50%, -50%); /* Adjust for actual centering */
+  text-align: center;
+  width: 100%; /* Ensure title is horizontally centered */
+}
+
 /* Logo section */
 .header-left .header-logo {
   display: inline-block;
@@ -36,9 +46,10 @@
 }
 
 .header-title {
-  font-size: 1.5rem;
+ /* font-size: 1.5rem; */
   font-weight: bold;
   margin: 0;
+  padding:
   color: #fff;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
@@ -56,7 +67,7 @@
   color: #fff;
   text-decoration: none;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: bold;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer; /* Ensure cursor changes to pointer */
@@ -98,7 +109,7 @@
 */
   .header-right .nav-grid {
     flex-direction: column;
-    gap: 1rem;
+    gap: .5rem;
     align-items: center;
   }
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TodoApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
@@ -26,3 +27,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 # -git
+=======
+# ToDoList-CRUD-Angular18
+This is a ToDoList app by Pankaj Kumar to perform the CRUD operation using service , even not using any localStorage or SessionStorage.
+>>>>>>> d9ee236ed7dca58c2734300ef19a1e4ace65ed5b
