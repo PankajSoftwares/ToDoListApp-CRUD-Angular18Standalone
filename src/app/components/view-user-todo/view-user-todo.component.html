@@ -58,27 +58,56 @@
   </table>
   
   <!-- Modal -->
-  <div *ngIf="selectedTodo" class="modal-overlay">
-    <div class="modal-content">
-      <h2>Edit Todo</h2>
-      <form [formGroup]="editTodoForm" (ngSubmit)="onEditSubmit()">
-        <label for="name">Name:</label>
-        <input id="name" type="text" formControlName="name" />
+<div *ngIf="selectedTodo" class="modal-overlay">
+  <div class="modal-content">
+    <h2>Edit Todo</h2>
+    <form [formGroup]="editTodoForm" (ngSubmit)="onEditSubmit()">
+      <label for="name">Name:</label>
+      <input id="name" type="text" formControlName="name" />
 
-        <label for="age">Age:</label>
-        <input id="age" type="number" formControlName="age" />
+      <label for="age">Age:</label>
+<input id="age" type="number" formControlName="age" />
 
+<div *ngIf="editTodoForm.get('age')?.invalid && editTodoForm.get('age')?.touched" class="error-message">
+  <span *ngIf="editTodoForm.get('age')?.errors?.['required']">Age is required.</span>
+  <span *ngIf="editTodoForm.get('age')?.errors?.['min']">Age cannot be less than 0.</span>
+  <span *ngIf="editTodoForm.get('age')?.errors?.['max']">Age cannot be greater than 100.</span>
+</div>
+
+
+      <!-- <label for="age">Age:</label>
+      <input id="age" type="number" formControlName="age" min="0" max="100" /> -->
+
+      <!-- <input id="age" type="number" formControlName="age" /> -->
+
+      <div class="state-container">
         <label for="state">State:</label>
-        <input id="state" type="text" formControlName="state" />
+        <input 
+          id="state" 
+          type="text" 
+          formControlName="state" 
+          placeholder="Type to search..."
+          (input)="filterStates()"
+          readonly
+        />
+        
+        <!-- Dropdown appears only if filteredStates has results -->
+        <ul *ngIf="filteredStates.length > 0" class="state-dropdown">
+          <li *ngFor="let state of filteredStates" (click)="selectState(state)">
+            🏞️ {{ state }}
+          </li>
+        </ul>
+      </div>
 
-        <label for="task">Task:</label>
-        <textarea id="task" formControlName="task"></textarea>
+      <label for="task">Task:</label>
+      <textarea id="task" formControlName="task"></textarea>
 
-        <div class="modal-actions">
-          <button type="submit" [disabled]="editTodoForm.invalid">Save</button>
-          <button type="button" (click)="closeModal()">Cancel</button>
-        </div>
-      </form>
-    </div>
+      <div class="modal-actions">
+        <button type="submit" [disabled]="editTodoForm.invalid">Save</button>
+        <button type="button" (click)="closeModal()">Cancel</button>
+      </div>
+    </form>
   </div>
+</div>
+
 </div>

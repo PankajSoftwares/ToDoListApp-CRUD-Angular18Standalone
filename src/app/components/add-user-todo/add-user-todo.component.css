@@ -167,4 +167,45 @@ button[type="submit"]:disabled {
   .add-todo-container {
     padding: 1.5rem;
   }
+
+  .state{
+    text-decoration-color: #3700b3;
+  }
+
+  /* Style the input field */
+#state {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #8B4513; /* Brown border */
+  border-radius: 5px;
+  outline: none;
+}
+
+/* Style the dropdown (ul) */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  background-color: #8B4513; /* Brown background */
+  color: white; /* White text */
+  border-radius: 5px;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the dropdown items (li) */
+ul li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Hover effect on dropdown items */
+ul li:hover {
+  background-color: #A0522D; /* Lighter brown */
+}
+
 }

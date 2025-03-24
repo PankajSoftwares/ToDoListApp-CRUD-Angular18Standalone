@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angula
 import { Router } from '@angular/router';
 import { TodoService } from '../../services/todo.service';
 import { CommonModule } from '@angular/common';
+import { Observable, startWith, map, of } from 'rxjs';
 
 @Component({
   selector: 'app-add-user-todo',
@@ -12,14 +13,12 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./add-user-todo.component.css'],
 })
 export class AddUserTodoComponent {
-  redirectToViewTasks(): void {
-    this.router.navigate(['/view-user-todo']);
-  }
-
   addTodoForm: FormGroup;
+  filteredStates: Observable<string[]> = of([]);
+  showDropdown = false; // Controls dropdown visibility
+
   public states = [
-    'Andhra Pradesh',
-   'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa',
+    'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa',
     'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka', 'Kerala',
     'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland',
     'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura',
@@ -28,15 +27,30 @@ export class AddUserTodoComponent {
 
   constructor(private todoService: TodoService, private router: Router) {
     this.addTodoForm = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.min(3), Validators.max(25)]),
-      age: new FormControl('', [Validators.required,Validators.min(3), Validators.max(100)]),
+      name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]),
+      age: new FormControl('', [Validators.required, Validators.min(3), Validators.max(100)]),
       state: new FormControl(''),
       task: new FormControl('', [Validators.required, Validators.maxLength(150)]),
     });
+
+    this.filteredStates = this.addTodoForm.controls['state'].valueChanges.pipe(
+      startWith(''),
+      map(value => (value.length > 0 ? this.filterStates(value) : [])) // Hide list when empty
+    );
   }
 
-  ngOnInit() {
-    console.log('Todos from service on Init:', this.todoService.getTodos());
+  private filterStates(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.states.filter(state => state.toLowerCase().includes(filterValue));
+  }
+
+  selectState(state: string) {
+    this.addTodoForm.controls['state'].setValue(state);
+    this.showDropdown = false; // Hide dropdown after selection
+  }
+
+  hideDropdown() {
+    setTimeout(() => this.showDropdown = false, 200); // Small delay to allow click selection
   }
 
   onSubmit() {

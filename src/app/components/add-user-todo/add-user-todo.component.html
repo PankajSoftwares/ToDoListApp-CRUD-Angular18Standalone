@@ -16,13 +16,34 @@
     </div>
 
     <label for="state">🌍 State:</label>
+    <input
+      id="state"
+      type="text"
+      formControlName="state"
+      placeholder="Type to search..."
+      (focus)="showDropdown = true"
+      (blur)="hideDropdown()"
+    />
+    
+    <!-- Show dropdown only when user has typed at least one character -->
+    <ul *ngIf="showDropdown && (filteredStates | async)?.length">
+      <li *ngFor="let state of (filteredStates | async) || []" (click)="selectState(state)">
+        🏞️ {{ state }}
+      </li>
+    </ul>
+    
+    <div *ngIf="addTodoForm.get('state')?.invalid && addTodoForm.get('state')?.touched" class="error">
+      ℹ️ State is optional.
+    </div>
+
+    <!-- <label for="state">🌍 State:</label>
     <select id="state" formControlName="state">
       <option value="">🌐 Select State</option>
       <option *ngFor="let state of states" [value]="state">🏞️ {{ state }}</option>
     </select>
     <div *ngIf="addTodoForm.get('state')?.invalid && addTodoForm.get('state')?.touched" class="error">
       ℹ️ State is optional.
-    </div>
+    </div> -->
 
     <label for="task">✅ Task:</label>
     <textarea id="task" formControlName="task" placeholder="Enter your task"></textarea>

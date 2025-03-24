@@ -1,8 +1,8 @@
 <header class="header">
   <div class="header-left">
-    <a routerLink="/login" class="header-logo">
+    <a [routerLink]="isLoggedIn ? '/app-add-user-todo' : '/login'" class="header-logo">
       <img src="assets/logo.png" alt="Todo App Logo" />
-    </a>
+    </a>    
   </div>
 
   <div class="header-center">
