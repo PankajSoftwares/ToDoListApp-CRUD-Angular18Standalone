@@ -6,8 +6,8 @@ import { ViewUserTodoComponent } from './components/view-user-todo/view-user-tod
 
 export const routes: Routes = [
   { path: '', redirectTo: 'signup', pathMatch: 'full' }, // Default route redirects to login
-  { path: 'login', component: LoginComponent },         // Login route
   { path: 'signup', component: SignupComponent },       // Signup route
+  { path: 'login', component: LoginComponent },         // Login route
   { path: 'logout', component: SignupComponent },         // Login route after logout
 
   {
