@@ -5,17 +5,13 @@ import { AddUserTodoComponent } from './components/add-user-todo/add-user-todo.c
 import { ViewUserTodoComponent } from './components/view-user-todo/view-user-todo.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'signup', pathMatch: 'full' }, // Default route redirects to login
-  { path: 'signup', component: SignupComponent },       // Signup route
-  { path: 'login', component: LoginComponent },         // Login route
-  { path: 'logout', component: SignupComponent },         // Login route after logout
+  { path: '', redirectTo: 'signup', pathMatch: 'full' }, 
+  { path: 'signup', component: SignupComponent },       
+  { path: 'login', component: LoginComponent },      
+  { path: 'app-add-user-todo', component: AddUserTodoComponent }, 
+  { path: 'view-user-todo', component: ViewUserTodoComponent }, 
 
-  {
-    path: 'app-add-user-todo',
-    component: AddUserTodoComponent                     // Add User ToDo route
-  },
-  {
-    path: 'view-user-todo',
-    component: ViewUserTodoComponent                    // View All User ToDos route
-  }
+  { path: 'logout', redirectTo: 'login', pathMatch: 'full' }, // Logout should go to login
+
+  { path: '**', redirectTo: 'signup', pathMatch: 'full' }
 ];
