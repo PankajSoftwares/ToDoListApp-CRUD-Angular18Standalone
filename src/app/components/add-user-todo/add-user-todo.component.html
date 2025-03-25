@@ -45,7 +45,7 @@
       ℹ️ State is optional.
     </div> -->
 
-    <label for="task">✅ Task:</label>
+    <label for="task">✅ ToDo Task:</label>
     <textarea id="task" formControlName="task" placeholder="Enter your task"></textarea>
     <div *ngIf="addTodoForm.get('task')?.invalid && addTodoForm.get('task')?.touched" class="error">
       ⚠️ Task is required and cannot exceed 100 characters.

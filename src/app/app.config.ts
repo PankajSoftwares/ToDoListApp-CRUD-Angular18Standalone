@@ -8,6 +8,8 @@ export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // Default route redirects to login
   { path: 'login', component: LoginComponent },         // Login route
   { path: 'signup', component: SignupComponent },       // Signup route
+  { path: 'logout', component: LoginComponent },         // Login route after logout
+
   {
     path: 'app-add-user-todo',
     component: AddUserTodoComponent                     // Add User ToDo route
